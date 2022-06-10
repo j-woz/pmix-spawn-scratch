@@ -16,3 +16,5 @@ CC = mpicc
 
 clean:
 	rm -fv *.o *.x
+
+.PRECIOUS: %.o
