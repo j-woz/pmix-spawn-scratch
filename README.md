@@ -20,7 +20,8 @@ Add simple MPI Init/Finalize
 workflow-3::
 Add MPI communication
 
-
+workflow-4::
+Capture output from child app
 
 
 Questions
