@@ -1,6 +1,6 @@
 /*
- * Copy of colocate.c
- */ 
+ * Copy of colocate.c - wrap for MPI
+ */
 
 /*
  * Copyright (c) 2004-2010 The Trustees of Indiana University and Indiana
@@ -36,6 +36,7 @@
 #include <unistd.h>
 
 #include "examples.h"
+#include <mpi.h>
 #include <pmix.h>
 
 static pmix_proc_t myproc;
@@ -144,6 +145,8 @@ int main(int argc, char **argv)
     size_t dninfo;
     pmix_status_t code = PMIX_EVENT_JOB_END;
     char *cmd = "hostname";
+
+    MPI_Init(NULL, NULL);
 
     pid = getpid();
 
@@ -263,5 +266,6 @@ done:
                 myproc.nspace, myproc.rank);
     }
     fflush(stderr);
+    MPI_Finalize();
     return (exitcode);
 }
